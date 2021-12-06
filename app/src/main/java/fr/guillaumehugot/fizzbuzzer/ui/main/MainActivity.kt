@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(binding.container.id, FizzBuzzResultFragment.newInstance(1000))
+                .replace(binding.container.id, FizzBuzzResultFragment.newInstance(100, listOf(FizzBuzzer(3, "fizz"))))
                 .commitNow()
         }
     }

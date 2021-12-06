@@ -7,7 +7,7 @@ class FizzBuzzResultAdapter(private val limit: Int, private val fizzBuzzers: Lis
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FizzBuzzResultCell = FizzBuzzResultCell(parent)
 
-    override fun onBindViewHolder(holder: FizzBuzzResultCell, position: Int) = holder.bind(position, fizzBuzzers)
+    override fun onBindViewHolder(holder: FizzBuzzResultCell, position: Int) = holder.bind(position + 1, fizzBuzzers)
 
     override fun getItemCount(): Int = limit
 }

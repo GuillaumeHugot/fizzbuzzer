@@ -1,13 +1,19 @@
 package fr.guillaumehugot.fizzbuzzer.ui.main
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+
+
 /**
  * @param period the word appearance periodicity. Must be != 0
  * @param word the word displayed every time the period is reached
  */
+@Parcelize
 data class FizzBuzzer(
     val period: Int,
     val word: String
-)
+): Parcelable
 
 /**
  * Transform an Int to a fizzbuzz String according the rule defined by [fizzBuzzers]
