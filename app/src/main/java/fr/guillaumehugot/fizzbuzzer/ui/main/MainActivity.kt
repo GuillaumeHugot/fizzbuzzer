@@ -2,7 +2,6 @@ package fr.guillaumehugot.fizzbuzzer.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import fr.guillaumehugot.fizzbuzzer.R
 import fr.guillaumehugot.fizzbuzzer.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {

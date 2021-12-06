@@ -4,7 +4,6 @@ import fr.guillaumehugot.fizzbuzzer.ui.main.FizzBuzzer
 import fr.guillaumehugot.fizzbuzzer.ui.main.toFizzBuzzWord
 import org.junit.Assert.*
 import org.junit.Test
-import java.lang.IllegalArgumentException
 
 class FizzBuzzUnitTest {
 
