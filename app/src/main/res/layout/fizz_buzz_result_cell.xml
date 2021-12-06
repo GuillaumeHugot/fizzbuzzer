@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    tools:context=".ui.main.FizzBuzzResultCell">
+    tools:context=".ui.main.result.FizzBuzzResultCell">
 
     <TextView
         android:id="@+id/fizzBuzzText"

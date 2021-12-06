@@ -1,7 +1,8 @@
-package fr.guillaumehugot.fizzbuzzer.ui.main
+package fr.guillaumehugot.fizzbuzzer.ui.main.result
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import fr.guillaumehugot.fizzbuzzer.ui.main.FizzBuzzer
 
 class FizzBuzzResultAdapter(private val limit: Int, private val fizzBuzzers: List<FizzBuzzer>): RecyclerView.Adapter<FizzBuzzResultCell>() {
 

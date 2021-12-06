@@ -1,9 +1,11 @@
-package fr.guillaumehugot.fizzbuzzer.ui.main
+package fr.guillaumehugot.fizzbuzzer.ui.main.result
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import fr.guillaumehugot.fizzbuzzer.databinding.FizzBuzzResultCellBinding
+import fr.guillaumehugot.fizzbuzzer.ui.main.FizzBuzzer
+import fr.guillaumehugot.fizzbuzzer.ui.main.toFizzBuzzWord
 
 class FizzBuzzResultCell(parent: ViewGroup) :
     RecyclerView.ViewHolder(FizzBuzzResultCellBinding.inflate(
