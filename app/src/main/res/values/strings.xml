@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">FizzBuzzer</string>
     <string name="fizz_buzz_limit_hint" translatable="false">100</string>
-    <string name="fizz_buzz_limit_name">Limit</string>
+    <string name="fizz_buzz_limit_name">How high do you want to count?</string>
     <string name="fizz_buzz_first_value_name">Your Fizz word</string>
+    <string name="fizz_buzz_first_value_period">Your Fizz frequency</string>
+    <string name="fizz_buzz_second_value_name">Your Buzz word</string>
+    <string name="fizz_buzz_second_value_period">Your Buzz frequency</string>
     <string name="fizz_buzz_first_word_value_hint">Fizz</string>
     <string name="fizz_buzz_first_period_value_hint" translatable="false">3</string>
-    <string name="fizz_buzz_second_value_name">Your Buzz word</string>
     <string name="fizz_buzz_second_word_value_hint">Buzz</string>
     <string name="fizz_buzz_second_period_value_hint" translatable="false">5</string>
     <string name="fizz_buzz_show_me_the_result">Show me the result !</string>

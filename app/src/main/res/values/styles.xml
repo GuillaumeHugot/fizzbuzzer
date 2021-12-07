@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="AppTheme.TextView.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="android:textColor">@color/dark_grey</item>
+    </style>
+</resources>
