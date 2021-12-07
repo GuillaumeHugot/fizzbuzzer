@@ -13,7 +13,7 @@ str1, all multiples of int2 are replaced by str2, all multiples of int1 and int2
 
 ### Choices I made
 * I displayed the result in a recyclerview where each cell process what it should display according to it's number. It allow us to be unaffected by the limit chosen by the user.
-* I didn't built any architecture or worked on several git branches as it seemed irrevelant on a project with this size, data flow & future perspectives.
+* I didn't built any architecture or worked on several git branches as it seemed irrelevant on a project with this size, data flow & future perspectives.
 * I took the liberty to interpret some cases, for example if I enter buzz, 5 before fizz, 3, should we display buzzfizz or fizzbuzz ? In a work environment I would have asked what was more relevant to the use case or at least acknowledged the choice I made but here I just added a comment where it seemed justified.
 * I commented the key functions only but we may be extend the code coverage if needed, if we want to build an sdk for example.
 * I tested the data processing part only. It seemed logical as it is the heart of this application logic.
