@@ -23,7 +23,7 @@ data class FizzBuzzer(
  */
 fun Int.toFizzBuzzWord(fizzBuzzers: List<FizzBuzzer>) = fizzBuzzers
     .filter { it.period != 0 && (this % it.period) == 0 }
-    .sortedBy { it.period }
+    .sortedBy { it.period }//allow us to display fizzbuzz even if the "buzz" appear before the "fizz" in the list. Should ask to the spec writer what we want here
     .map { it.word }
     .let { matchingFizzBuzzers ->
         if (matchingFizzBuzzers.isEmpty())

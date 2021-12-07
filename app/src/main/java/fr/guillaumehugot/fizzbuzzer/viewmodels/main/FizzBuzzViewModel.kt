@@ -28,6 +28,12 @@ class FizzBuzzViewModel : ViewModel() {
 
     val onShowResult = MutableLiveData<Unit>()
 
+    /**
+     * Check if the filled data is valid to process the result
+     *
+     * We could allow to fill only 1 word & period or even only the limit (but might be confusing),
+     * depending of the goal here
+     */
     fun isDataValid() = combine(listOf(
         isLimitValid.asFlow(),
         isFirstWordValid.asFlow(),
@@ -38,9 +44,21 @@ class FizzBuzzViewModel : ViewModel() {
         fields.all { isValid -> isValid }
     }
 
-    fun getLimit() = onNewLimit.value!!
-    fun getFizzBuzzers() = listOf(
-        FizzBuzzer(onNewFirstPeriodValue.value!!, onNewFirstWordValue.value!!),
-        FizzBuzzer(onNewSecondPeriodValue.value!!, onNewSecondWordValue.value!!)
-    )
+    /**
+     * Get the current limit
+     * @throws IllegalStateException if it hasn't been set yet
+     */
+    fun getLimit() = if (isLimitValid.value != true) throw IllegalStateException("Limit isn't set yet") else onNewLimit.value!!
+
+    /**
+     * Get the current fizzbuzzers
+     */
+    fun getFizzBuzzers(): List<FizzBuzzer> {
+        val fizzBuzzers = mutableListOf<FizzBuzzer>()
+        if (onNewFirstPeriodValue.value != null && onNewFirstWordValue.value != null)
+            fizzBuzzers.add(FizzBuzzer(onNewFirstPeriodValue.value!!, onNewFirstWordValue.value!!))
+        if (onNewSecondPeriodValue.value != null && onNewSecondWordValue.value != null)
+            FizzBuzzer(onNewSecondPeriodValue.value!!, onNewSecondWordValue.value!!)
+        return fizzBuzzers.toList()
+    }
 }

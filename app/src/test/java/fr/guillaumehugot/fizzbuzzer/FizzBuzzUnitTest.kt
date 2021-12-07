@@ -4,6 +4,7 @@ import fr.guillaumehugot.fizzbuzzer.ui.main.FizzBuzzer
 import fr.guillaumehugot.fizzbuzzer.ui.main.toFizzBuzzWord
 import org.junit.Assert.*
 import org.junit.Test
+import kotlin.system.measureTimeMillis
 
 class FizzBuzzUnitTest {
 
@@ -137,5 +138,21 @@ class FizzBuzzUnitTest {
         } catch (e: Exception) {
             fail("negative test failed on exception : $e")
         }
+    }
+
+    @Test
+    fun performanceTest() {
+
+        val elapsedTime = measureTimeMillis {
+            val result1 = (1..1000).map { it.toFizzBuzzWord(listOf(FizzBuzzer(3, "fizz"), FizzBuzzer(5, "buzz"))) }
+        }
+        check(elapsedTime < 100) { "toFizzBuzzWord speed failed with 1000 iterations, expected execution time max 100ms, got $elapsedTime" }
+
+
+        val fizzBuzzers = (1..1000).map { FizzBuzzer(it, "fizz") }.shuffled()
+        val elapsedTime2 = measureTimeMillis {
+            val result2 = 1.toFizzBuzzWord(fizzBuzzers)
+        }
+        check(elapsedTime < 100) { "toFizzBuzzWord speed failed with 1000 fizzbuzzers, expected execution time max 100ms, got $elapsedTime" }
     }
 }

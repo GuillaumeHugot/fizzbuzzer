@@ -16,6 +16,15 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * Interface to enter your fizzbuzz parameters.
+ *
+ * I sticked to the original specs here asking for only 2 words but
+ * if we wanted to add more than that or to have the possibility to
+ * add N words, we could have a generic "word adder" cell.
+ * In our case it seemed over-engineered as it seemed that this code won't evolve
+ * in the future.
+ */
 class FizzBuzzFormFragment : Fragment(), CoroutineScope {
 
     companion object {
@@ -41,8 +50,7 @@ class FizzBuzzFormFragment : Fragment(), CoroutineScope {
         viewModel = ViewModelProvider(requireActivity())[FizzBuzzViewModel::class.java]
 
         binding?.limit?.doOnTextChanged { text, _, _, _ ->
-            val textAsInt = text.toString().toIntOrNull()
-            viewModel.onNewLimit.postValue(textAsInt)
+            viewModel.onNewLimit.postValue(text.toString().toIntOrNull())
         }
 
         viewModel.isLimitValid
@@ -51,8 +59,7 @@ class FizzBuzzFormFragment : Fragment(), CoroutineScope {
             }
 
         binding?.firstPeriodValue?.doOnTextChanged { text, _, _, _ ->
-            val textAsInt = text.toString().toIntOrNull()
-            viewModel.onNewFirstPeriodValue.postValue(textAsInt)
+            viewModel.onNewFirstPeriodValue.postValue(text.toString().toIntOrNull())
         }
 
         viewModel.isFirstPeriodValid
@@ -61,8 +68,7 @@ class FizzBuzzFormFragment : Fragment(), CoroutineScope {
             }
 
         binding?.secondPeriodValue?.doOnTextChanged { text, _, _, _ ->
-            val textAsInt = text.toString().toIntOrNull()
-            viewModel.onNewSecondPeriodValue.postValue(textAsInt)
+            viewModel.onNewSecondPeriodValue.postValue(text.toString().toIntOrNull())
         }
 
         viewModel.isSecondPeriodValid

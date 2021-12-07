@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import fr.guillaumehugot.fizzbuzzer.databinding.FizzBuzzResultFragmentBinding
 import fr.guillaumehugot.fizzbuzzer.viewmodels.main.FizzBuzzViewModel
 
+/**
+ * Display a simple list showing the result of a fizzbuzz
+ */
 class FizzBuzzResultFragment : Fragment() {
 
     companion object {
