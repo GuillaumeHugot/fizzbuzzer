@@ -25,7 +25,7 @@ str1, all multiples of int2 are replaced by str2, all multiples of int1 and int2
 We could remember what he entered last time and/or suggested some word and period above the keyboard.
 Example:
 
-![example of filling suggestion](/readmeimages/example_suggestion.jpg =x200)
+![example of filling suggestion](/readmeimages/example_suggestion.jpg)
 
 * We could build an interface that allows you to add N fizz / buzz words.
 Every time you fill a cell with a word and a period, another one pops up bellow with empty fields (or you have a "+" button)
