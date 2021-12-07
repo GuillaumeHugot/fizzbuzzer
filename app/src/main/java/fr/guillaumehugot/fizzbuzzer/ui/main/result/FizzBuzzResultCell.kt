@@ -14,7 +14,6 @@ class FizzBuzzResultCell(parent: ViewGroup) :
 
     fun bind(number: Int, fizzBuzzers: List<FizzBuzzer>) {
         val binding = FizzBuzzResultCellBinding.bind(itemView)
-        //todo
         binding.fizzBuzzText.text = number.toFizzBuzzWord(fizzBuzzers)
     }
 }

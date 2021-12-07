@@ -29,7 +29,7 @@ class FizzBuzzResultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[FizzBuzzViewModel::class.java]
-        // TODO: Use the ViewModel
+
         binding?.recyclerView?.layoutManager = LinearLayoutManager(requireContext())
         binding?.recyclerView?.adapter = FizzBuzzResultAdapter(viewModel.getLimit(), viewModel.getFizzBuzzers())
     }
