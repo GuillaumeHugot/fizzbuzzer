@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FizzBuzzer</string>
+    <string name="fizz_buzz_limit_name">Jusqu\'à combien voulez vous compter ?</string>
+    <string name="fizz_buzz_first_value_name">Votre mot Fizz</string>
+    <string name="fizz_buzz_first_value_period">La fréquence de votre Fizz</string>
+    <string name="fizz_buzz_second_value_name">Votre mot Buzz</string>
+    <string name="fizz_buzz_second_value_period">La fréquence de votre Buzz</string>
+    <string name="fizz_buzz_first_word_value_hint">Fizz</string>
+    <string name="fizz_buzz_second_word_value_hint">Buzz</string>
+    <string name="fizz_buzz_show_me_the_result">Montrez moi le resultat !</string>
+    <string name="error_period_should_be_integer">La période doit être un entier supérieur à 0</string>
+    <string name="error_word_should_not_be_empty">Ce champ est requis</string>
+    <string name="error_limit_should_be_integer">La limite doit être un entier supérieur à 0</string>
+</resources>
