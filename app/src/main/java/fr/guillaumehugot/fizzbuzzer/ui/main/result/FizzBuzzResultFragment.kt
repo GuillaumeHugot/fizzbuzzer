@@ -13,6 +13,7 @@ import fr.guillaumehugot.fizzbuzzer.viewmodels.main.FizzBuzzViewModel
 class FizzBuzzResultFragment : Fragment() {
 
     companion object {
+        const val TAG = "FizzBuzzResultFragment"
         fun newInstance() = FizzBuzzResultFragment()
     }
 

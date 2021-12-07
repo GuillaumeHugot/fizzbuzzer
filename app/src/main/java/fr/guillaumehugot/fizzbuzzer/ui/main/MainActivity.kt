@@ -27,8 +27,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.onShowResult
             .observe(this) {
                 supportFragmentManager.beginTransaction()
-                    .replace(binding.container.id, FizzBuzzResultFragment.newInstance())
-                    .commitNow()
+                    .replace(binding.container.id, FizzBuzzResultFragment.newInstance(), FizzBuzzResultFragment.TAG)
+                    .addToBackStack(FizzBuzzResultFragment.TAG)
+                    .commit()
             }
     }
 }

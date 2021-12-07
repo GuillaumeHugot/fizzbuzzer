@@ -8,7 +8,7 @@ class FizzBuzzViewModel : ViewModel() {
 
     val onNewLimit = MutableLiveData<Int?>()
     val isLimitValid
-        get() = onNewLimit.map { it != null }
+        get() = onNewLimit.map { it != null && it > 0 }
 
     val onNewFirstWordValue = MutableLiveData<String>()
     val isFirstWordValid
@@ -16,7 +16,7 @@ class FizzBuzzViewModel : ViewModel() {
 
     val onNewFirstPeriodValue = MutableLiveData<Int?>()
     val isFirstPeriodValid
-        get() = onNewFirstPeriodValue.map { it != null }
+        get() = onNewFirstPeriodValue.map { it != null && it > 0 }
 
     val onNewSecondWordValue = MutableLiveData<String>()
     val isSecondWordValid
@@ -24,7 +24,7 @@ class FizzBuzzViewModel : ViewModel() {
 
     val onNewSecondPeriodValue = MutableLiveData<Int?>()
     val isSecondPeriodValid
-        get() = onNewSecondPeriodValue.map { it != null }
+        get() = onNewSecondPeriodValue.map { it != null && it > 0 }
 
     val onShowResult = MutableLiveData<Unit>()
 

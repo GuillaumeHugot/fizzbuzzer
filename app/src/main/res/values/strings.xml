@@ -9,7 +9,7 @@
     <string name="fizz_buzz_second_word_value_hint">Buzz</string>
     <string name="fizz_buzz_second_period_value_hint" translatable="false">5</string>
     <string name="fizz_buzz_show_me_the_result">Show me the result !</string>
-    <string name="error_period_should_be_integer">The period must be an integer</string>
+    <string name="error_period_should_be_integer">The period must be an integer greater than 0</string>
     <string name="error_word_should_not_be_empty">This field is required</string>
-    <string name="error_limit_should_be_integer">The limit must be an integer</string>
+    <string name="error_limit_should_be_integer">The limit must be an integer greater than 0</string>
 </resources>
