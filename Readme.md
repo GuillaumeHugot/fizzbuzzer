@@ -18,6 +18,7 @@ str1, all multiples of int2 are replaced by str2, all multiples of int1 and int2
 * I commented the key functions only but we may be extend the code coverage if needed, if we want to build an sdk for example.
 * I tested the data processing part only. It seemed logical as it is the heart of this application logic.
 * This readme is in english even if the target audience is likely to be french natives. It seemed logical as 1. this is a readme and 2. the subject was in english too.
+* I only used liveData and coroutines even if I way more used to the use of RxKotlin
 
 
 ### If I had more time
