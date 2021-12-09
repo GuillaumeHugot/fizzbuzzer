@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.jakewharton.rxbinding4.view.clicks
+import com.jakewharton.rxbinding4.widget.textChanges
+import com.vincentmasselis.rxuikotlin.disposeOnState
+import com.vincentmasselis.rxuikotlin.utils.FragmentState
 import fr.guillaumehugot.fizzbuzzer.R
 import fr.guillaumehugot.fizzbuzzer.databinding.FizzBuzzFormFragmentBinding
 import fr.guillaumehugot.fizzbuzzer.viewmodels.main.FizzBuzzViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -49,63 +52,98 @@ class FizzBuzzFormFragment : Fragment(), CoroutineScope {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[FizzBuzzViewModel::class.java]
 
-        binding?.limit?.doOnTextChanged { text, _, _, _ ->
-            viewModel.onNewLimit.postValue(text.toString().toIntOrNull())
-        }
+        binding!!.limit.textChanges()
+            .skipInitialValue()
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { text ->
+                binding!!.limit.error =
+                    if (text.toString().toIntOrNull() == null)
+                        getString(R.string.error_limit_should_be_integer)
+                    else
+                        null
 
-        viewModel.isLimitValid
-            .observe(viewLifecycleOwner) {
-                binding!!.limit.error = if (it) null else getString(R.string.error_limit_should_be_integer)
-            }
-
-        binding?.firstPeriodValue?.doOnTextChanged { text, _, _, _ ->
-            viewModel.onNewFirstPeriodValue.postValue(text.toString().toIntOrNull())
-        }
-
-        viewModel.isFirstPeriodValid
-            .observe(viewLifecycleOwner) {
-                binding!!.firstPeriodValue.error = if (it) null else getString(R.string.error_period_should_be_integer)
-            }
-
-        binding?.secondPeriodValue?.doOnTextChanged { text, _, _, _ ->
-            viewModel.onNewSecondPeriodValue.postValue(text.toString().toIntOrNull())
-        }
-
-        viewModel.isSecondPeriodValid
-            .observe(viewLifecycleOwner) {
-                binding!!.secondPeriodValue.error = if (it) null else getString(R.string.error_period_should_be_integer)
-            }
-
-        binding?.firstWordValue?.doOnTextChanged { text, _, _, _ ->
-            viewModel.onNewFirstWordValue.postValue(text?.toString() ?: "")
-        }
-
-        viewModel.isFirstWordValid
-            .observe(viewLifecycleOwner) {
-                binding!!.firstWordValue.error = if (it) null else getString(R.string.error_word_should_not_be_empty)
-            }
-
-        binding?.secondWordValue?.doOnTextChanged { text, _, _, _ ->
-            viewModel.onNewSecondWordValue.postValue(text?.toString() ?: "")
-        }
-
-        viewModel.isSecondWordValid
-            .observe(viewLifecycleOwner) {
-                binding!!.secondWordValue.error = if (it) null else getString(R.string.error_word_should_not_be_empty)
-            }
-
-
-        launch {
-            viewModel.isDataValid()
-                .collectLatest {
-                    binding?.button?.isEnabled = it
+                text.toString().toIntOrNull()?.also {
+                    viewModel.newLimit(it)
                 }
-        }
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
 
+        binding!!.firstPeriodValue.textChanges()
+            .skipInitialValue()
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { text ->
+                binding!!.firstPeriodValue.error =
+                    if (text.toString().toIntOrNull() == null)
+                        getString(R.string.error_period_should_be_integer)
+                    else
+                        null
 
-        binding?.button?.setOnClickListener {
-            viewModel.onShowResult.postValue(Unit)
-        }
+                text.toString().toIntOrNull()?.also {
+                    viewModel.newFirstPeriod(it)
+                }
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
+        binding!!.secondPeriodValue.textChanges()
+            .skipInitialValue()
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { text ->
+                binding!!.secondPeriodValue.error =
+                    if (text.toString().toIntOrNull() == null)
+                        getString(R.string.error_period_should_be_integer)
+                    else
+                        null
+
+                text.toString().toIntOrNull()?.also {
+                    viewModel.newSecondPeriod(it)
+                }
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
+        binding!!.firstWordValue.textChanges()
+            .skipInitialValue()
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { text ->
+                binding!!.firstWordValue.error =
+                    if (text.toString().isEmpty())
+                        getString(R.string.error_word_should_not_be_empty)
+                    else
+                        null
+
+                viewModel.newFirstWord(text.toString())
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
+        binding!!.secondWordValue.textChanges()
+            .skipInitialValue()
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { text ->
+                binding!!.secondWordValue.error =
+                    if (text.toString().isEmpty())
+                        getString(R.string.error_word_should_not_be_empty)
+                    else
+                        null
+
+                viewModel.newSecondWord(text.toString())
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
+        viewModel.isDataValid()
+            .subscribe {
+                binding?.button?.isEnabled = it
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
+        binding!!.button.clicks()
+            .subscribe {
+                viewModel.showResult()
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
     }
 
     override fun onDestroyView() {

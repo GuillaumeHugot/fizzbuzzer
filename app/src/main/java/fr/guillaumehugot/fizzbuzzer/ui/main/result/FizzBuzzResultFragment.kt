@@ -33,8 +33,8 @@ class FizzBuzzResultFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[FizzBuzzViewModel::class.java]
 
-        binding?.recyclerView?.layoutManager = LinearLayoutManager(requireContext())
-        binding?.recyclerView?.adapter = FizzBuzzResultAdapter(viewModel.getLimit(), viewModel.getFizzBuzzers())
+        binding!!.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding!!.recyclerView.adapter = FizzBuzzResultAdapter(this, viewModel)
     }
 
     override fun onDestroyView() {
