@@ -1,0 +1,7 @@
+CREATE TABLE DbUserFizzBuzzer (
+  userId TEXT NOT NULL,
+  fizzBuzzerId TEXT NOT NULL,
+  
+  FOREIGN KEY(userId) REFERENCES DbUser(id) ON DELETE CASCADE,
+  UNIQUE (userId, fizzBuzzerId)
+);

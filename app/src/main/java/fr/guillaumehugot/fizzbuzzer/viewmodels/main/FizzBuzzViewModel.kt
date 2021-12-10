@@ -1,12 +1,29 @@
 package fr.guillaumehugot.fizzbuzzer.viewmodels.main
 
 import androidx.lifecycle.*
-import fr.guillaumehugot.fizzbuzzer.ui.main.FizzBuzzer
+import fr.guillaumehugot.fizzbuzzer.FizzBuzzApplication
+import fr.guillaumehugot.fizzbuzzer.domain.FizzBuzzer
+import fr.guillaumehugot.fizzbuzzer.provider.UserProvider
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.subjects.BehaviorSubject
+import javax.inject.Inject
+
+
+
 
 class FizzBuzzViewModel : ViewModel() {
+
+    @Inject
+    lateinit var userProvider: UserProvider
+
+
+    init {
+        FizzBuzzApplication.instance.dispatchingAndroidInjector?.inject(this)
+
+//        AndroidInjection.inject(this);
+    }
+
 
     private val onNewLimit: BehaviorSubject<Int> = BehaviorSubject.create()
 
@@ -62,4 +79,5 @@ class FizzBuzzViewModel : ViewModel() {
     ) { firstPeriod, firstWord, secondPeriod, secondWord ->
         listOf(FizzBuzzer(firstPeriod, firstWord), FizzBuzzer(secondPeriod, secondWord))
     }.observeOn(AndroidSchedulers.mainThread())
+
 }

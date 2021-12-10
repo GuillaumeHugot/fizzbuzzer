@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.vincentmasselis.rxuikotlin.disposeOnState
 import com.vincentmasselis.rxuikotlin.utils.FragmentState
-import fr.guillaumehugot.fizzbuzzer.ui.main.FizzBuzzer
+import fr.guillaumehugot.fizzbuzzer.domain.FizzBuzzer
 import fr.guillaumehugot.fizzbuzzer.viewmodels.main.FizzBuzzViewModel
 
 class FizzBuzzResultAdapter(fragment: Fragment, viewModel: FizzBuzzViewModel) :

@@ -1,0 +1,5 @@
+CREATE TABLE DbFizzBuzzer (
+  fizzId TEXT PRIMARY KEY NOT NULL UNIQUE,
+  period INTEGER NOT NULL,
+  word TEXT NOT NULL
+);

@@ -1,0 +1,9 @@
+CREATE TABLE DbUser (
+  id TEXT PRIMARY KEY NOT NULL UNIQUE,
+  countLimit INTEGER
+);
+
+
+INSERT INTO DbUser (id, countLimit)
+VALUES ('UUID', 100);
+
