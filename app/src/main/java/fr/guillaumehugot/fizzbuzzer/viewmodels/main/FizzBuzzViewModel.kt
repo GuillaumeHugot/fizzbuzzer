@@ -4,13 +4,11 @@ import androidx.lifecycle.*
 import fr.guillaumehugot.fizzbuzzer.FizzBuzzApplication
 import fr.guillaumehugot.fizzbuzzer.domain.FizzBuzzer
 import fr.guillaumehugot.fizzbuzzer.provider.UserProvider
+import fr.guillaumehugot.fizzbuzzer.provider.ioc.DaggerProviderComponent
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import javax.inject.Inject
-
-
-
 
 class FizzBuzzViewModel : ViewModel() {
 
@@ -35,8 +33,9 @@ class FizzBuzzViewModel : ViewModel() {
 
     private val onShowResult: BehaviorSubject<Unit> = BehaviorSubject.create()
 
-    fun newLimit(limit: Int) = onNewLimit.onNext(limit)
-    fun onLimit(): Observable<Int> = onNewLimit.hide()
+    fun newLimit(limit: Int) = userProvider.updateCurrentUserLimit(limit)
+
+    fun onLimit(): Observable<Int> = userProvider.currentUserLimit().observeOn(AndroidSchedulers.mainThread())
 
     fun newFirstPeriod(period: Int) = onNewFirstPeriodValue.onNext(period)
 

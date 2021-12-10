@@ -52,6 +52,13 @@ class FizzBuzzFormFragment : Fragment(), CoroutineScope {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[FizzBuzzViewModel::class.java]
 
+        viewModel.onLimit()
+            .firstElement()
+            .subscribe { limit ->
+                binding!!.limit.setText(limit.toString())
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
         binding!!.limit.textChanges()
             .skipInitialValue()
             .debounce(500, TimeUnit.MILLISECONDS)

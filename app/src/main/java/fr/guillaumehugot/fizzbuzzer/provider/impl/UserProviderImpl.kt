@@ -20,6 +20,10 @@ class UserProviderImpl @Inject constructor(
     }
 
 
-//    override fun list(): Observable<List<User>> = dao.list()
+    override fun currentUserLimit(): Observable<Int> = dao.currentUserLimit()
+
+      override fun update(item: User) = dao.update(item)
+
+    override fun updateCurrentUserLimit(limit: Int) = dao.updateCurrentUserLimit(limit)
 
 }

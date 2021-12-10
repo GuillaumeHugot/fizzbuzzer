@@ -19,9 +19,9 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun driver(): SqlDriver = AndroidSqliteDriver(
+    fun driver(context: Context): SqlDriver = AndroidSqliteDriver(
         FizzBuzzDatabase.Schema,
-        FizzBuzzApplication.instance,
+        context,
         "fizz_buzz.db",
         callback = object : AndroidSqliteDriver.Callback(FizzBuzzDatabase.Schema) {
 

@@ -1,9 +1,23 @@
 CREATE TABLE DbUser (
   id TEXT PRIMARY KEY NOT NULL UNIQUE,
-  countLimit INTEGER
+  countLimit INTEGER AS Int NOT NULL
 );
 
 
 INSERT INTO DbUser (id, countLimit)
 VALUES ('UUID', 100);
 
+update:
+UPDATE DbUser SET countLimit = ? WHERE id = ?;
+
+currentUser:
+SELECT * FROM DbUser
+WHERE id = 'UUID'; -- let's make it simple for this demo
+
+currentUserLimit:
+SELECT countLimit FROM DbUser
+WHERE id = 'UUID'; -- let's make it simple for this demo
+
+updateCurrentUserLimit:
+UPDATE DbUser SET countLimit = ?
+WHERE id = 'UUID'; -- let's make it simple for this demo
