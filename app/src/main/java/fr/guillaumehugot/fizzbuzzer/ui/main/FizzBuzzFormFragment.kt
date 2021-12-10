@@ -52,6 +52,7 @@ class FizzBuzzFormFragment : Fragment(), CoroutineScope {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[FizzBuzzViewModel::class.java]
 
+        //init view
         viewModel.onLimit()
             .firstElement()
             .subscribe { limit ->
@@ -59,6 +60,35 @@ class FizzBuzzFormFragment : Fragment(), CoroutineScope {
             }
             .disposeOnState(FragmentState.DESTROY_VIEW, this)
 
+        viewModel.onFirstPeriod()
+            .firstElement()
+            .subscribe { firstPeriod ->
+                binding!!.firstPeriodValue.setText(firstPeriod.toString())
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
+        viewModel.onFirstWord()
+            .firstElement()
+            .subscribe { firstWord ->
+                binding!!.firstWordValue.setText(firstWord)
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
+        viewModel.onSecondPeriod()
+            .firstElement()
+            .subscribe { secondPeriod ->
+                binding!!.secondPeriodValue.setText(secondPeriod.toString())
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
+        viewModel.onSecondWord()
+            .firstElement()
+            .subscribe { secondWord ->
+                binding!!.secondWordValue.setText(secondWord)
+            }
+            .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
+        //listen to changes
         binding!!.limit.textChanges()
             .skipInitialValue()
             .debounce(500, TimeUnit.MILLISECONDS)
@@ -75,6 +105,7 @@ class FizzBuzzFormFragment : Fragment(), CoroutineScope {
                 }
             }
             .disposeOnState(FragmentState.DESTROY_VIEW, this)
+
 
         binding!!.firstPeriodValue.textChanges()
             .skipInitialValue()
