@@ -11,6 +11,4 @@ import javax.inject.Singleton
 interface ProviderComponent {
 
     fun inject(fizzBuzzViewModel: FizzBuzzViewModel)
-
-    fun inject(fizzBuzzApplication: FizzBuzzApplication)
 }

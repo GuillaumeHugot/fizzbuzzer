@@ -1,15 +1,14 @@
 package fr.guillaumehugot.fizzbuzzer.provider.ioc
 
-import dagger.Binds
-import fr.guillaumehugot.fizzbuzzer.provider.*
-import fr.guillaumehugot.fizzbuzzer.provider.impl.*
 import dagger.Module
 import dagger.Provides
+import fr.guillaumehugot.fizzbuzzer.provider.UserProvider
+import fr.guillaumehugot.fizzbuzzer.provider.impl.UserProviderImpl
 
 @Module
 object ProviderModule {
 
-    @Binds
+    @Provides
     fun userProvider(userProviderImpl: UserProviderImpl): UserProvider = userProviderImpl
 }
 

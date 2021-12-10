@@ -19,9 +19,7 @@ class FizzBuzzViewModel : ViewModel() {
 
 
     init {
-        FizzBuzzApplication.instance.dispatchingAndroidInjector?.inject(this)
-
-//        AndroidInjection.inject(this);
+        FizzBuzzApplication.instance.providerComponent.inject(this)
     }
 
 

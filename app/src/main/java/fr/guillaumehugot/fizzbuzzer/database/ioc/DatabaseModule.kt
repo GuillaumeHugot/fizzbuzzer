@@ -6,6 +6,7 @@ import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 import dagger.Module
 import dagger.Provides
+import fr.guillaumehugot.fizzbuzzer.FizzBuzzApplication
 import fr.guillaumehugot.fizzbuzzer.database.UserDAO
 import fr.guillaumehugot.fizzbuzzer.database.impl.UserDAOImpl
 import fr.guillaumehugot.fizzbuzzer.sqldelight.FizzBuzzDatabase
@@ -18,9 +19,9 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun driver(context: Context): SqlDriver = AndroidSqliteDriver(
+    fun driver(): SqlDriver = AndroidSqliteDriver(
         FizzBuzzDatabase.Schema,
-        context,
+        FizzBuzzApplication.instance,
         "fizz_buzz.db",
         callback = object : AndroidSqliteDriver.Callback(FizzBuzzDatabase.Schema) {
 
