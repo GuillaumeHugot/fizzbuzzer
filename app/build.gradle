@@ -1,8 +1,8 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-parcelize'
-}
+apply plugin: 'com.squareup.sqldelight'
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 
 android {
     compileSdk 31
@@ -35,6 +35,15 @@ android {
 
 }
 
+sqldelight {
+    FizzBuzzDatabase {
+        packageName = "fr.guillaumehugot.fizzbuzzer.sqldelight"
+    }
+}
+kapt {
+    generateStubs = true
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -53,4 +62,10 @@ dependencies {
     implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
     implementation 'com.jakewharton.rxbinding4:rxbinding-appcompat:4.0.0'
     implementation 'com.vincentmasselis.rxuikotlin:rxuikotlin-core:3.0.0'
+    //database
+    implementation "com.squareup.sqldelight:android-driver:$sql_delight_version"
+    implementation "com.squareup.sqldelight:rxjava3-extensions:$sql_delight_version"
+    //IOC
+    implementation 'com.google.dagger:dagger-android:2.38.1'
+    kapt 'com.google.dagger:dagger-compiler:2.38.1'
 }

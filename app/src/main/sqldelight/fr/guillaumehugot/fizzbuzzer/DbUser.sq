@@ -1,0 +1,56 @@
+CREATE TABLE DbUser (
+  id TEXT PRIMARY KEY NOT NULL UNIQUE,
+  countLimit INTEGER AS Int NOT NULL,
+  firstPeriod INTEGER AS Int NOT NULL,
+  firstWord TEXT NOT NULL,
+  secondPeriod INTEGER AS Int NOT NULL,
+  secondWord TEXT NOT NULL
+);
+
+INSERT INTO DbUser (id, countLimit, firstPeriod, firstWord, secondPeriod, secondWord)
+VALUES ('UUID', 100, 3, 'Fizz', 5, 'Buzz');
+
+
+updateCurrentUserLimit:
+UPDATE DbUser SET countLimit = ?
+WHERE id = 'UUID';
+
+updateCurrentUserFirstPeriod:
+UPDATE DbUser SET firstPeriod = ?
+WHERE id = 'UUID';
+
+updateCurrentUserFirstWord:
+UPDATE DbUser SET firstWord = ?
+WHERE id = 'UUID';
+
+updateCurrentUserSecondPeriod:
+UPDATE DbUser SET secondPeriod = ?
+WHERE id = 'UUID';
+
+updateCurrentUserSecondWord:
+UPDATE DbUser SET secondWord = ?
+WHERE id = 'UUID';
+
+currentUserLimit:
+SELECT countLimit FROM DbUser
+WHERE id = 'UUID';
+
+currentUserFirstPeriod:
+SELECT firstPeriod FROM DbUser
+WHERE id = 'UUID';
+
+currentUserFirstWord:
+SELECT firstWord FROM DbUser
+WHERE id = 'UUID';
+
+currentUserSecondPeriod:
+SELECT secondPeriod FROM DbUser
+WHERE id = 'UUID';
+
+currentUserSecondWord:
+SELECT secondWord FROM DbUser
+WHERE id = 'UUID';
+
+currentUserFizzBuzzers:
+SELECT firstPeriod, firstWord, secondPeriod, secondWord FROM DbUser
+WHERE id = 'UUID';

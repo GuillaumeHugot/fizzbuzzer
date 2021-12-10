@@ -1,4 +1,4 @@
-package fr.guillaumehugot.fizzbuzzer.ui.main
+package fr.guillaumehugot.fizzbuzzer.domain
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

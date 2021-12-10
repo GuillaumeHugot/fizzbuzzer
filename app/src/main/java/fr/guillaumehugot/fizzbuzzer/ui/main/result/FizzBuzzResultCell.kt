@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import fr.guillaumehugot.fizzbuzzer.databinding.FizzBuzzResultCellBinding
-import fr.guillaumehugot.fizzbuzzer.ui.main.FizzBuzzer
-import fr.guillaumehugot.fizzbuzzer.ui.main.toFizzBuzzWord
+import fr.guillaumehugot.fizzbuzzer.domain.FizzBuzzer
+import fr.guillaumehugot.fizzbuzzer.domain.toFizzBuzzWord
 
 class FizzBuzzResultCell(parent: ViewGroup) :
     RecyclerView.ViewHolder(FizzBuzzResultCellBinding.inflate(
